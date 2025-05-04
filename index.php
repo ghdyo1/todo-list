@@ -1,10 +1,16 @@
 <?php
+require_once "db-config.php";
 if(isset($_GET["id"])){
     $id=$_GET["id"];
 }
 else{
     $id="1";
 }
+$sql = "SELECT * FROM task WHERE task_type = :id";
+$query = $conn->prepare($sql);
+$query->bindParam(":id", $id);
+$query->execute();
+$tasks = $query->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,11 +39,21 @@ else{
         </div>
         <div class="list">
             <div class="tasks">
-                <div class="task">
-                    <img src="not-completed.svg">
-                    <p>Placeholder1</p>
-                    <img src="delete.svg">
-                </div>
+                <?php
+                foreach($tasks as $task){
+                    if($task["completed"]==0){
+                        $image="not-completed";
+                    }
+                    else{
+                        $image="completed";
+                    }
+                    echo "<div class='task'>
+                        <img class='completion-image' src='".$image.".svg'>
+                        <p>".$task["name"]."</p>
+                        <img class='delete-icon' src='delete.svg'>
+                    </div>";
+                }
+                ?>
             </div>
             <div class="clear"></div>
         </div>

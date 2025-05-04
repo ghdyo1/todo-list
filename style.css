@@ -65,3 +65,42 @@ main{
     color: #F3F3F3;
     font-weight: 600;
 }
+
+.list{
+    width: 50vw;
+    min-height: 500px;
+    background-color: #F1ECE6;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.tasks{
+    width: 45vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.task{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 88px;
+    width: 100%;
+}
+.task img.completion-image{
+    width: 46px;
+    height: 46px;
+}
+.task p{
+    flex-grow: 1;
+    font-size: 32px;
+    font-family: "Poppins", sans-serif;
+    color: #323232;
+    padding-left: 20px;
+}
+.task img.delete-icon{
+    width: 19px;
+    height: 24px;
+}
